@@ -120,7 +120,7 @@
                 "to": 10
             }
         ],
-        "autoStart": false,
+        "autoStart": true,
         "browserData": "keep-all",
         "downloadMode": "disabled",
         "remoteCamp": false,
@@ -134,7 +134,7 @@
     },
     "cacheDir": "",
     "accessKey": "701db1d250a23a8f72ba7c3e79fb2c79",
-    "note": "",
+    "note": "atrei73",
     "topMost": false,
     "lowEndMode": true
 }
