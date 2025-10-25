@@ -1,8 +1,7 @@
 # ИСХОДНЫЙ ОБРАЗ
 FROM 9hitste/app:latest
 
-# 1. Установка всех утилит и зависимостей (включая зависимости браузера)
-# Используем ваш полный список пакетов.
+# 1. Установка всех утилит и зависимостей (полный список)
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wget tar netcat bash curl sudo bzip2 psmisc bc \
@@ -11,7 +10,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 2. Установка порта
-# Порт 10000, который использует 9Hits App.
 ENV PORT 10000
 EXPOSE 10000
 
@@ -20,8 +18,8 @@ CMD bash -c " \
     # --- ШАГ А: НЕМЕДЛЕННЫЙ ЗАПУСК HEALTH CHECK ---
     while true; do echo -e 'HTTP/1.1 200 OK\r\n\r\nOK' | nc -l -p ${PORT} -q 0 -w 1; done & \
     
-    # --- ШАГ Б: ЗАПУСК ОСНОВНОГО ПРИЛОЖЕНИЯ (С МАКСИМАЛЬНЫМИ ФЛАГАМИ БЕЗОПАСНОСТИ) ---
-    /nh.sh --token=701db1d250a23a8f72ba7c3e79fb2c79 --mode=bot --allow-crypto=no --session-note=atrei73 --note=atrei73 --hide-browser --schedule-reset=1 --cache-del=200 --create-swap=10G --no-sandbox --disable-dev-shm-usage --disable-gpu --headless & \
+    # --- ШАГ Б: ЗАПУСК ОСНОВНОГО ПРИЛОЖЕНИЯ (УДАЛЕНЫ ВСЕ ХРОМ-ФЛАГИ, КРОМЕ --hide-browser) ---
+    /nh.sh --token=701db1d250a23a8f72ba7c3e79fb2c79 --mode=bot --allow-crypto=no --session-note=atrei73 --note=atrei73 --hide-browser --schedule-reset=1 --cache-del=200 --create-swap=10G --tmp-dir=/tmp & \
     
     # Даем программе 70 секунд...
     sleep 70; \
@@ -36,5 +34,5 @@ CMD bash -c " \
     echo 'Копирование конфигурации завершено.'; \
     \
     # --- ШАГ Г: УДЕРЖАНИЕ КОНТЕЙНЕРА ---
-    tail -f /dev/null \
+    wait \
 "
