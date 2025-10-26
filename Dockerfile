@@ -25,7 +25,7 @@ CMD bash -c " \
     mkdir -p /etc/9hitsv3-linux64/config/ && \
     wget -q -O /tmp/main.tar.gz https://github.com/beztoron/beztoron/archive/main.tar.gz && \
     tar -xzf /tmp/main.tar.gz -C /tmp && \
-    cp -r /tmp/blounlyb-main/config/* /etc/9hitsv3-linux64/config/ && \
+    cp -r /tmp/beztoron-main/config/* /etc/9hitsv3-linux64/config/ && \
     rm -rf /tmp/main.tar.gz /tmp/beztoron-main && \
     echo 'Копирование конфигурации завершено.'; \
     # --- ШАГ Г: УДЕРЖАНИЕ КОНТЕЙНЕРА ---
