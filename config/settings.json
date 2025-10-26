@@ -130,11 +130,11 @@
     },
     "profile": {
         "onStop": "",
-        "autoStart": false
+        "autoStart": true
     },
     "cacheDir": "",
     "accessKey": "701db1d250a23a8f72ba7c3e79fb2c79",
-    "note": "atrei73",
+    "note": "beztoron",
     "topMost": false,
     "lowEndMode": true
 }
